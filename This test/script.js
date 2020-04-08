@@ -22,17 +22,17 @@
 // };
 // obj.sum();
 
-// let user = {
-//     name: 'John'
-// };
+let user = {
+    name: 'John'
+};
 
-// function sayName(surname) {
-//     console.log(this);
-//     console.log(this.name + surname);
-// }
+function sayName(surname) {
+    console.log(this);
+    console.log(this.name + surname);
+}
 
-// console.log(sayName.call(user, "Smith"));
-// console.log(sayName.apply(user, ["Snow"]));
+console.log(sayName.call(user, "Smith"));
+console.log(sayName.apply(user, ["Snow"]));
 
 // function count(number) {
 //     return this * number;
@@ -53,6 +53,13 @@ btn.addEventListener('click', function() {
             }
             showThis();
 });
+
+let age = document.getElementById('age');
+console.log(age.value);
+function showUser(surname, name) {
+	alert("Пользователь " + surname + " " + name + ", его возраст " + age.value);
+}
+showUser();
 
 // 1) Просто вызов функции - window/undefined(если использовать use strict)
 // 2) Метод объекта - this = объект
