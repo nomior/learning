@@ -61,24 +61,45 @@
 
 // log(...numbers);
 
-'use strict'
-class Options {
-    constructor(height, width, bg, fontSize, textAlign) {
-        this.height = height;
-        this.width = width;
-        this.bg = bg;
-        this.fontSize = fontSize;
-        this.textAlign = textAlign;
-    }
-    createDiv() {
-        let newDiv = document.createElement("div");
-        document.body.appendChild(newDiv);
-        newDiv.textContent = "Случайный текст";
-        let param = `height: ${this.height}px; width: ${this.width}px; back-ground: ${this.bg}px; font-size: ${this.fontSize}; text-align: ${this.textAlign};`;
-        newDiv.style.cssText = param;
-    }
-}
-const block = new Options(100, 100, "blue", "absolute", "center");
-block.createDiv();
+// 'use strict'
+// class Options {
+//     constructor(height, width, bg, fontSize, textAlign) {
+//         this.height = height;
+//         this.width = width;
+//         this.bg = bg;
+//         this.fontSize = fontSize;
+//         this.textAlign = textAlign;
+//     }
+//     createDiv() {
+//         let newDiv = document.createElement("div");
+//         document.body.appendChild(newDiv);
+//         newDiv.textContent = "Случайный текст";
+//         let param = `height: ${this.height}px; width: ${this.width}px; back-ground: ${this.bg}px; font-size: ${this.fontSize}; text-align: ${this.textAlign};`;
+//         newDiv.style.cssText = param;
+//     }
+// }
+// const block = new Options(100, 100, "blue", "absolute", "center");
+// block.createDiv();
+var counting = '';
 
+function fourLetters(names) {
+    this.names = names;
+    let count = this.names.split(' ');
+
+    count.forEach(function(item){
+        if (item.length == 4) {
+            counting++;
+            }
+        });
+
+};
+
+fourLetters("Tror Gvigris Deriana Nori");
+console.log(counting);
+
+// function WordCount(str) { 
+//     return str.split(" ").length;
+//   }
+  
+//   console.log(WordCount("hello world"));
 

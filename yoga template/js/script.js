@@ -114,4 +114,111 @@ window.addEventListener('DOMContentLoaded', function() {
     };
 
 
+    // Form
+
+    let message = {
+        loading: 'Загрузка..',
+        success: 'Спасибо!',
+        failed: 'Чтото пошла не так'
+    };
+
+    let form = document.querySelector('.main-form'),
+        input = form.getElementsByTagName('input'),
+        contactForm = document.querySelector('#form'),
+        contactInput = contactForm.getElementsByTagName('input'),
+
+        statusMessage = document.createElement('div');
+
+        statusMessage.classList.add('status');
+
+        console.log(form);
+   
+        //modal form
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        form.appendChild(statusMessage);
+
+        let request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+        // Use FormData // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+
+        let formData = new FormData(form);
+
+        console.log(formData);
+
+        let obj = {};
+        formData.forEach(function(value, key) {
+            obj[key] = value;
+        });
+
+        console.log(obj);
+
+        let json = JSON.stringify(obj);
+
+        console.log(json);
+
+        // Use FrodmData //request.send(formData);
+        request.send(json);
+
+        request.addEventListener('readystatechange', function() {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = message.loading;
+            } else if (request.readyState === 4 && request.status == 200) {
+                statusMessage.innerHTML = message.success; 
+            } else {
+                statusMessage.innerHTML = message.failed;
+            } 
+        });
+
+        for (let i = 0; i < input.length; i++) {
+            input[i].value = '';
+            }
+        });
+
+        //footer form
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            contactForm.appendChild(statusMessage);
+    
+            let request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            // Use FormData // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    
+            let formData = new FormData(contactForm);
+    
+            console.log(formData);
+    
+            let obj = {};
+            formData.forEach(function(value, key) {
+                obj[key] = value;
+            });
+    
+            console.log(obj);
+    
+            let json = JSON.stringify(obj);
+    
+            console.log(json);
+    
+            // Use FrodmData //request.send(formData);
+            request.send(json);
+    
+            request.addEventListener('readystatechange', function() {
+                if (request.readyState < 4) {
+                    statusMessage.innerHTML = message.loading;
+                } else if (request.readyState === 4 && request.status == 200) {
+                    statusMessage.innerHTML = message.success; 
+                } else {
+                    statusMessage.innerHTML = message.failed;
+                } 
+            });
+    
+            for (let i = 0; i < contactInput.length; i++) {
+                contactInput[i].value = '';
+                }
+            });    
 });
+
