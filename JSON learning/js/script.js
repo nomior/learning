@@ -25,7 +25,8 @@ inputRub.addEventListener('input', () => {
     //statusText - 
     //responseText / response
     //readyState - текущее состояние XMLhttpRequest
-    
+
+    // Default ver
     request.addEventListener('readystatechange', function() {
         if (request.readyState === 4 && request.status == 200) {
             let data = JSON.parse(request.response);
@@ -35,4 +36,14 @@ inputRub.addEventListener('input', () => {
             inputUsd.value = "Что-то пошло не так";
         }
     });
+
+    // Ver promise
+    let promise = new Promise (function(resolve, reject) {
+        resolve(request.addEventListener('readystatechange', () => {request.readyState === 4 && request.status == 200}));
+    });
+
+    promise
+        .then(() => {let data = JSON.parse(request.response); inputUsd.value = inputRub.value / data.usd;})
+        .catch(() => inputUsd.value = "Что-то пошло не так");
+   
 });
