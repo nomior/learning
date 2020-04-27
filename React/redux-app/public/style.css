@@ -17,7 +17,7 @@
     display: flex;
     margin-bottom: 34px;
 }
-#counter{
+.counter-wrap h1{
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -52,13 +52,35 @@
 }
 .btn-inc{
     background: #089C20;
+    background-image: url(/Vector.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.25))
 }
 .btn-dec{
     background: #E7AA10;
+    background-image: url(/Minus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.25))
 }
 .btn-res{
     background: #CF1C1C;
+    background-image: url(/Group.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.25))
 }
+
 .btn-upl{
     background: #9B0F9E;
 }
